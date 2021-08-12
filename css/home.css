@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, Montserrat;
+  outline: none;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 10px;
+}
+body aside {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: sticky;
+  left: 0;
+  top: 0;
+  height: 100vh;
+}
+body aside h1 {
+  color: #221f3e;
+}
+body aside h1 span {
+  color: #c59909;
+}
+body aside .menu-option {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+body aside .menu-option p {
+  margin-left: 20px;
+  font-weight: 600;
+}
+body aside .menu-option svg path {
+  fill: #221f3e;
+}
+body aside .menu-option.current svg path {
+  fill: #c59909;
+}
+body main {
+  flex-grow: 1;
+}
+body main .hero {
+  padding: 0 5%;
+}
+body main .hero img {
+  width: 100%;
+  border-radius: 10px;
+}
+body main .trending {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+@media screen and (max-width: 1250px) {
+  body main .trending {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 500px) {
+  body main .trending {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+body main .trending .card .img img {
+  width: 100%;
+}
+body main .trending .card .content p {
+  margin: 10px 0;
+}
+body main .trending .card .content p:nth-of-type(2) {
+  height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+body main .trending .card .content p:nth-of-type(1) {
+  color: #221f3e;
+  font-weight: 600;
+}
+body main form.search {
+  display: flex;
+  padding: 25px 5%;
+}
+body main form.search input {
+  padding: 10px;
+  border: 2px #cecece solid;
+  border-radius: 5px;
+  flex-grow: 4;
+  font-size: 1em;
+}
+body main form.search button {
+  margin-left: 20px;
+  padding: 10px;
+  background-color: #221f3e;
+  border: 2px #221f3e solid;
+  border-radius: 5px;
+  color: white;
+  flex-grow: 2;
+}
+body main h2 {
+  margin: 20px 5%;
+  color: #221f3e;
+}
+
+/*# sourceMappingURL=home.css.map */

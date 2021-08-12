@@ -22,6 +22,11 @@ body main {
 body main form {
   width: 100%;
 }
+body main form .columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
 body main form label {
   display: block;
 }
@@ -44,6 +49,18 @@ body main form button {
   font-size: 1rem;
   cursor: pointer;
 }
+body main form p.siwtch {
+  cursor: pointer;
+  text-align: center;
+  color: #3f3770;
+  margin: 20px 0;
+}
+body main form p.siwtch span {
+  color: #c59909;
+}
+body main form p.siwtch:hover span {
+  text-decoration: underline;
+}
 body aside {
   background-color: #3f3770;
   display: flex;
@@ -61,6 +78,37 @@ body aside h1 {
 }
 body aside h1 span {
   color: #c59909;
+}
+body aside.error {
+  color: white;
+  background-color: #f14668;
+  border-color: #f5c2c7;
+  font-weight: 600;
+  height: fit-content;
+  display: block;
+  padding: 10px;
+  position: fixed;
+  width: 98%;
+  left: 1%;
+  top: 15px;
+  border-radius: 5px;
+}
+body aside.error p {
+  margin: 10px 0;
+}
+body aside.success {
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+  font-weight: 600;
+  height: fit-content;
+  display: block;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+}
+body aside.success p {
+  margin: 10px 0;
 }
 
 /*# sourceMappingURL=main.css.map */

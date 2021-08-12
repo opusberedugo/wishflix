@@ -28,25 +28,28 @@
           <label for="">Last name:</label>
           <input type="text">
         </div>
-
-        <label for="">Username:</label>
-        <input type="text">
-
-
-        <label for="">Eamil:</label>
-        <input type="email">
-
-        <label for="">Password:</label>
-        <input type="password">
-
-        <label for="">Confirm Password:</label>
-        <input type="password">
-
-        <button>Submit</button>
-        <p class="siwtch">Already have account? <span>Sign In</span></p>
       </div>
       <!--End of colmns-->
+
+
+      <label for="">Username:</label>
+      <input type="text">
+
+
+      <label for="">Email:</label>
+      <input type="email">
+
+      <label for="">Password:</label>
+      <input type="password" class="su-pass">
+
+      <label for="">Confirm Password:</label>
+      <input type="password" class="su-pass">
+
+      <button type="button" class="submit">Submit</button>
+      <p class="siwtch">Already have account? <span>Sign In</span></p>
     </form>
+
+
     <form action="" class="signup" style="display: none;">
 
       <label for="">Username or Email:</label>
@@ -55,15 +58,26 @@
       <label for="">Password:</label>
       <input type="password">
 
-      <button>Submit</button>
+      <button type="button" class="submit">Submit</button>
       <p class="siwtch">Dont have account? <span>Sign Up</span></p>
 
 
 
     </form>
   </main>
+
+  <aside class="error" style="display: none;">
+    <p></p>
+  </aside>
+
+  <aside class="success" style="display: none;">
+    <p>Account Created Successfully</p>
+  </aside>
+
+
   <script src="javascript/jquery.js"></script>
   <script src="javascript/index.js"></script>
+  <!-- <script src="javascript/challenge.js"></script> -->
 </body>
 
 </html>
