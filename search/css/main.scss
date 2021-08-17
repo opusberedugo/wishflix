@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: "Poppins";
+  outline: none;
+}
+
+svg {
+  path {
+    fill: #221f3e;
+  }
+}
+
+h1 {
+  text-align: center;
+  color: #221f3e;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+nav {
+  display: flex;
+  padding: 10px;
+  margin-bottom: auto;
+  a {
+    display: block;
+    &:hover {
+      svg {
+        path {
+          fill: #322f4e;
+        }
+      }
+    }
+    &:nth-of-type(1) {
+      margin-right: auto;
+    }
+  }
+}
+
+main {
+  margin-bottom: auto;
+  form {
+    .controls {
+      display: flex;
+      padding: 20px 10%;
+      justify-content: center;
+      input {
+        border: 2px #221f3e solid;
+        border-radius: 4px;
+        padding: 20px 5px;
+        flex-grow: 3;
+        margin: 20px 5px;
+        font-size: 1rem;
+      }
+      button {
+        background: #221f3e;
+        color: white;
+        padding: 10px 5px;
+        border: 2px #221f3e solid;
+        flex-grow: 2;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 20px 5px;
+        font-size: 1em;
+        &:hover {
+          background-color: #322f4e;
+        }
+      }
+    }
+  }
+}
+
+nav.result {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 0 5px lightgrey;
+  position: sticky;
+  top: 0;
+  left: 0;
+  .menu {
+    display: flex;
+    margin-left: auto;
+    a {
+      &:nth-of-type(1) {
+        margin: 0px 10px;
+      }
+    }
+  }
+  form {
+    flex-grow: 1;
+    display: flex;
+    margin: 0 10vw;
+    input {
+      flex-grow: 1;
+      padding: 10px;
+      border: 2px #221f3e solid;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      padding: 10px;
+      background-color: #221f3e;
+      color: white;
+      border: 2px #221f3e solid;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin: 0 10px;
+      &:hover {
+        background-color: #322f4e;
+      }
+    }
+  }
+}

@@ -1,0 +1,229 @@
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, Montserrat;
+    outline: none;
+  }
+  
+  @mixin media-max ($width) {
+    @media screen and (max-width: $width) {
+      @content;
+    }
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  nav {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    @include media-max(500px) {
+      display: block;
+    }
+    .brand {
+      @include media-max(500px) {
+        // margin-left: 0;
+        display: flex;
+        align-content: center;
+        align-items: center;
+      }
+      .logo {
+        h1 {
+          color: #221f3e;
+          padding: 10px;
+        }
+        @include media-max(500px) {
+          margin-right: auto;
+        }
+      }
+      .profile {
+        display: none;
+        @include media-max(500px) {
+          display: inherit;
+        }
+        &:hover {
+          svg {
+            path {
+              fill: #322f4e;
+            }
+          }
+        }
+        svg {
+          path {
+            fill: #221f3e;
+          }
+        }
+      }
+      .menu {
+        display: none;
+        @include media-max(500px) {
+          display: inherit;
+        }
+        padding: 10px;
+        background-color: white;
+        border: none;
+        svg {
+          path {
+            fill: #221f3e;
+          }
+        }
+      }
+    }
+    .options {
+      display: flex;
+      flex-grow: 1;
+      align-content: center;
+      align-items: center;
+      @include media-max(500px) {
+        // margin-left: 0;
+        display: none;
+      }
+      a {
+        padding: 20px;
+        color: black;
+        @include media-max(500px) {
+          // margin-left: 0;
+          display: block;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+        &:nth-of-type(1) {
+          margin-left: auto;
+          @include media-max(500px) {
+            margin-left: 0;
+            // display: none;
+          }
+        }
+        &.profile {
+          margin-left: auto;
+          @include media-max(500px) {
+            display: none;
+          }
+          &:hover {
+            svg {
+              path {
+                fill: #322f4e;
+              }
+            }
+          }
+          svg {
+            path {
+              fill: #221f3e;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  section.category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include media-max(914px) {
+      // flex-direction: column;
+      display: block;
+    }
+    .header {
+      margin: 0 20px;
+      @include media-max(914px) {
+        text-align: center;
+        font-weight: 600;
+      }
+    }
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      @include media-max(914px) {
+        justify-content: center;
+      }
+      a {
+        border-radius: 5rem;
+        padding: 10px;
+        border: 1px #221f3e solid;
+        color: #221f3e;
+        margin: 20px 10px;
+        &.active {
+          background-color: #221f3e;
+          color: white;
+        }
+      }
+    }
+  }
+  
+  section.popular {
+    h2 {
+      text-align: center;
+      color: #221f3e;
+      text-transform: uppercase;
+      margin: 20px 0;
+    }
+    .movies {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      @include media-max(850px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .movie {
+        padding: 20px;
+        .img {
+          img {
+            width: 100%;
+          }
+        }
+        .content {
+          display: flex;
+          p {
+            margin-right: auto;
+          }
+          button {
+            background: transparent;
+            border: none;
+            svg {
+              path {
+                fill: #221f3e;
+              }
+            }
+            &:hover {
+              svg {
+                path {
+                  fill: #3d395f;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  aside.details-modal {
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #221f3eb4;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    padding-left: 0;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+    .img {
+      width: 100;
+      img {
+        width: 100%;
+      }
+    }
+    .text {
+      color: white;
+      // padding: 0 20px;
+    }
+  }

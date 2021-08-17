@@ -1,8 +1,8 @@
 let formswitches = document.getElementsByClassName("siwtch");
 let forms = document.getElementsByTagName("form");
 
-let signUpFields = document.querySelectorAll("form.login input");
-let logInFields = document.querySelectorAll("form.signup input");
+let logInFields = document.querySelectorAll("form.login input");
+let signUpFields = document.querySelectorAll("form.signup input");
 
 
 let formButtons = document.querySelectorAll("button");
@@ -15,60 +15,17 @@ const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+")
 
 
 formswitches[0].onclick = () => {
-  $(forms[0]).fadeOut(1000, () => {
-    $(forms[1]).fadeIn(1000)
+  $(forms[0]).fadeOut(500, () => {
+    $(forms[1]).fadeIn(500)
   });
 }
 
 formswitches[1].onclick = () => {
-  $(forms[1]).fadeOut(1000, () => {
-    $(forms[0]).fadeIn(1000)
+  $(forms[1]).fadeOut(500, () => {
+    $(forms[0]).fadeIn(500)
   });
 }
 
-let db = openDatabase("WishFlix", "1", "Users Database", 4 * 1024 * 1024);
-
-
-db.transaction((t) => {
-  t.executeSql(`CREATE TABLE USERS(
-    -- ID INT AUTO_INCREMENT PRIMARY KEY,
-    FIRSTNAME VARCHAR(20) NOT NULL,
-    LASTNAME VARCHAR(20) NOT NULL,
-    USERNAME VARCHAR(20) UNIQUE NOT NULL,
-    EMAIL VARCHAR(20) NOT NULL,
-    PASSWORD VARCHAR(20) NOT NULL
-  );`)
-  console.log("Table Created")
-  t.executeSql(`INSERT INTO USERS (FIRSTNAME, LASTNAME, USERNAME, EMAIL,PASSWORD) VALUES('Opus','Bee','Opus','opusbee@gmail.com','12345')`)
-
-  console.log("Value Inserted")
-
-})
-
-var nameFree;
-
-const usernameAvailable = (username) => {
-  db.transaction((t) => {
-      t.executeSql(`SELECT USERNAME FROM USERS WHERE USERNAME = '${username}'`, [], (tx, results) => {
-        // console.log(results)
-        if (results.rows.length === 0) {
-          nameFree = true;
-          console.log(nameFree)
-        } else {
-          nameFree = false;
-        }
-      })
-    })
-    // return nameFree;
-}
-
-
-const signUp = (fname, lname, username, email, password) => {
-  db.transaction((t) => {
-    t.executeSql(`INSERT INTO USERS(FIRSTNAME, LASTNAME, USERNAME, EMAIL,PASSWORD) VALUES('${fname}','${lname}','${username}','${email}','${password}')`, undefined, () => {})
-
-  })
-}
 
 
 formButtons[0].onclick = () => {
@@ -78,13 +35,14 @@ formButtons[0].onclick = () => {
 
       $(errorAlert).fadeIn(500, () => {
         setInterval(() => {
-          $(errorAlert).fadeOut(4000)
+          $(errorAlert).fadeOut(3000)
         }, 5000);
       })
 
-      throw Error;
+      throw Error("All fields must be filled");
     }
   }
+
   usernameAvailable(signUpFields[2].value.trim())
   if (nameFree) {
     // console.log(signUpFields[2].value.trim())
@@ -96,12 +54,25 @@ formButtons[0].onclick = () => {
       }, 3000);
     })
     throw Error;
-
   }
 
 
   if (!emailRegex.test(signUpFields[3].value)) {
     alertText.textContent = "Please Enter a valid email"
+    $(errorAlert).fadeIn(500, () => {
+      setInterval(() => {
+        $(errorAlert).fadeOut(1000)
+      }, 3000);
+    })
+    throw Error;
+  }
+
+
+  emailAvailable(signUpFields[3].value.trim());
+  if (emailFree) {
+    // console.log(signUpFields[2].value.trim())
+  } else if (!emailFree) {
+    alertText.textContent = "Email has already been used"
     $(errorAlert).fadeIn(500, () => {
       setInterval(() => {
         $(errorAlert).fadeOut(1000)
@@ -130,11 +101,58 @@ formButtons[0].onclick = () => {
     throw Error;
   }
 
-  signUp(signUpFields[0].value, signUpFields[1].value, signUpFields[2].value, signUpFields[3].value, signUpFields[4].value)
+
+  signUp(signUpFields[0].value, signUpFields[1].value, signUpFields[2].value, signUpFields[3].value, signUpFields[4].value);
+
+  $("aside.success").fadeIn(500, () => {
+    setInterval(() => {
+      $("aside.success").fadeOut(1000)
+    }, 3000);
+  })
+
+  for (const field of signUpFields) {
+    field.value = "";
+  }
+
+  formswitches[0].click();
+
+
 }
 
 
 
 errorAlert.onclick = () => {
   $(errorAlert).fadeOut(500)
+}
+
+
+
+
+formButtons[1].onclick = () => {
+  for (const field of logInFields) {
+    if (field.value === "") {
+      alertText.textContent = "All fields must be filled"
+
+      $(errorAlert).fadeIn(500, () => {
+        setInterval(() => {
+          $(errorAlert).fadeOut(3000)
+        }, 5000);
+      })
+
+      throw Error("All fields must be filled");
+    }
+  }
+
+  if (emailRegex.test(logInFields[0].value)) {
+
+    emailLogIn(logInFields[0].value, logInFields[1].value)
+    if (emailLogInValid) {
+      getUsername()
+      sessionStorage.setItem("username", getUsername)
+    } else if (!emailLogInValid) {
+
+    }
+
+  }
+
 }

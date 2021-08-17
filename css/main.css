@@ -5,11 +5,12 @@
   font-family: Poppins, Montserrat;
   outline: none;
 }
+*::-webkit-scrollbar {
+  display: none;
+}
 
 body {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  padding: 0 10vw;
 }
 body main {
   display: flex;
@@ -21,6 +22,9 @@ body main {
 }
 body main form {
   width: 100%;
+}
+body main form h1 {
+  text-transform: uppercase;
 }
 body main form .columns {
   display: grid;
@@ -61,24 +65,6 @@ body main form p.siwtch span {
 body main form p.siwtch:hover span {
   text-decoration: underline;
 }
-body aside {
-  background-color: #3f3770;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  position: sticky;
-  top: 0;
-  left: 0;
-}
-body aside h1 {
-  font-size: 7rem;
-  color: #221f3e;
-}
-body aside h1 span {
-  color: #c59909;
-}
 body aside.error {
   color: white;
   background-color: #f14668;
@@ -88,10 +74,9 @@ body aside.error {
   display: block;
   padding: 10px;
   position: fixed;
-  width: 98%;
-  left: 1%;
-  top: 15px;
-  border-radius: 5px;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 body aside.error p {
   margin: 10px 0;
@@ -106,6 +91,8 @@ body aside.success {
   padding: 10px;
   position: fixed;
   width: 100%;
+  left: 0;
+  top: 0;
 }
 body aside.success p {
   margin: 10px 0;
