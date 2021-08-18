@@ -6,6 +6,12 @@
   outline: none;
 }
 
+@mixin media-max($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
 svg {
   path {
     fill: #221f3e;
@@ -83,6 +89,7 @@ nav.result {
   position: sticky;
   top: 0;
   left: 0;
+  background-color: white;
   .menu {
     display: flex;
     margin-left: auto;
@@ -113,6 +120,51 @@ nav.result {
       margin: 0 10px;
       &:hover {
         background-color: #322f4e;
+      }
+    }
+  }
+}
+
+main.result {
+  h1 {
+    margin: 20px 0;
+    color: #221f3e;
+  }
+  .search-results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    @include media-max(850px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .movie {
+      padding: 20px;
+      .img {
+        img {
+          width: 100%;
+        }
+      }
+      .content {
+        display: flex;
+        p {
+          margin-right: auto;
+        }
+        button {
+          background: transparent;
+          border: none;
+          svg {
+            path {
+              fill: #221f3e;
+            }
+          }
+          &:hover {
+            svg {
+              path {
+                fill: #3d395f;
+              }
+            }
+          }
+        }
       }
     }
   }

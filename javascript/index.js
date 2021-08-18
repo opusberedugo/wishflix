@@ -8,6 +8,7 @@ let signUpFields = document.querySelectorAll("form.signup input");
 let formButtons = document.querySelectorAll("button");
 let submitButtons = document.getElementsByClassName("submit")
 
+
 let errorAlert = document.querySelector(".error");
 let alertText = document.querySelector(".error p");
 
@@ -34,9 +35,7 @@ formButtons[0].onclick = () => {
       alertText.textContent = "All fields must be filled"
 
       $(errorAlert).fadeIn(500, () => {
-        setInterval(() => {
-          $(errorAlert).fadeOut(3000)
-        }, 5000);
+        $(errorAlert).fadeOut(3000)
       })
 
       throw Error("All fields must be filled");
@@ -44,14 +43,10 @@ formButtons[0].onclick = () => {
   }
 
   usernameAvailable(signUpFields[2].value.trim())
-  if (nameFree) {
-    // console.log(signUpFields[2].value.trim())
-  } else if (!nameFree) {
+  if (nameFree) {} else if (!nameFree) {
     alertText.textContent = "Username has already been taken"
     $(errorAlert).fadeIn(500, () => {
-      setInterval(() => {
-        $(errorAlert).fadeOut(1000)
-      }, 3000);
+      $(errorAlert).fadeOut(3000);
     })
     throw Error;
   }
@@ -60,23 +55,17 @@ formButtons[0].onclick = () => {
   if (!emailRegex.test(signUpFields[3].value)) {
     alertText.textContent = "Please Enter a valid email"
     $(errorAlert).fadeIn(500, () => {
-      setInterval(() => {
-        $(errorAlert).fadeOut(1000)
-      }, 3000);
+      $(errorAlert).fadeOut(3000)
     })
     throw Error;
   }
 
 
   emailAvailable(signUpFields[3].value.trim());
-  if (emailFree) {
-    // console.log(signUpFields[2].value.trim())
-  } else if (!emailFree) {
+  if (emailFree) {} else if (!emailFree) {
     alertText.textContent = "Email has already been used"
     $(errorAlert).fadeIn(500, () => {
-      setInterval(() => {
-        $(errorAlert).fadeOut(1000)
-      }, 3000);
+      $(errorAlert).fadeOut(3000)
     })
     throw Error;
   }
@@ -84,9 +73,7 @@ formButtons[0].onclick = () => {
   if (signUpFields[4].value !== signUpFields[5].value) {
     alertText.textContent = "Password must be the same"
     $(errorAlert).fadeIn(500, () => {
-      setInterval(() => {
-        $(errorAlert).fadeOut(1000)
-      }, 3000);
+      $(errorAlert).fadeOut(3000);
     })
     throw Error;
   }
@@ -95,7 +82,7 @@ formButtons[0].onclick = () => {
     alertText.textContent = "Password must have at laest 8 characters"
     $(errorAlert).fadeIn(500, () => {
       setInterval(() => {
-        $(errorAlert).fadeOut(1000)
+        $(errorAlert).fadeOut(3000)
       }, 3000);
     })
     throw Error;
@@ -106,7 +93,7 @@ formButtons[0].onclick = () => {
 
   $("aside.success").fadeIn(500, () => {
     setInterval(() => {
-      $("aside.success").fadeOut(1000)
+      $("aside.success").fadeOut(3000)
     }, 3000);
   })
 
@@ -147,10 +134,12 @@ formButtons[1].onclick = () => {
 
     emailLogIn(logInFields[0].value, logInFields[1].value)
     if (emailLogInValid) {
-      getUsername()
-      sessionStorage.setItem("username", getUsername)
+      console.log("");
+      getUsername();
+      sessionStorage.setItem("username", username);
+      window.location = "index.new.html"
     } else if (!emailLogInValid) {
-
+      throw Error("Username or email incorrect")
     }
 
   }

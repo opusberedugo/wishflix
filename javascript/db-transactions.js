@@ -92,3 +92,4 @@ const getUsername = (email) => {
 };
 
 signUp("John", "Snow", "jSnow", "jsnow@got.com", "password");
+signUp("John", "Snow", "jSnow", "jsnow@got.com", "password");

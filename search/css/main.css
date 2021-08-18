@@ -75,6 +75,7 @@ nav.result {
   position: sticky;
   top: 0;
   left: 0;
+  background-color: white;
 }
 nav.result .menu {
   display: flex;
@@ -106,6 +107,43 @@ nav.result form button {
 }
 nav.result form button:hover {
   background-color: #322f4e;
+}
+
+main.result h1 {
+  margin: 20px 0;
+  color: #221f3e;
+}
+main.result .search-results {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+@media screen and (max-width: 850px) {
+  main.result .search-results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+main.result .search-results .movie {
+  padding: 20px;
+}
+main.result .search-results .movie .img img {
+  width: 100%;
+}
+main.result .search-results .movie .content {
+  display: flex;
+}
+main.result .search-results .movie .content p {
+  margin-right: auto;
+}
+main.result .search-results .movie .content button {
+  background: transparent;
+  border: none;
+}
+main.result .search-results .movie .content button svg path {
+  fill: #221f3e;
+}
+main.result .search-results .movie .content button:hover svg path {
+  fill: #3d395f;
 }
 
 /*# sourceMappingURL=main.css.map */
