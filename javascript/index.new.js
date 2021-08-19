@@ -13,9 +13,12 @@ let faveSVG_HTML =
 
 let popularSection = document.getElementById("popular-movies-section");
 let popularMovies = [];
+let genres = [];
+let genreIndex = 0
 
 let modalImage = document.getElementById(".details-modal img");
 let detailsModal = document.querySelector(".details-modal");
+let mainSection = document.querySelector("main");
 
 const createMovieCard = (movie) => {
   let card = document.createElement("div");
@@ -38,6 +41,32 @@ const createMovieCard = (movie) => {
     `;
 
   return card;
+}
+
+const createMovieSection = (genre) => {
+  let section = document.createElement("section");
+  section.classList.add("popular");
+
+  let moviesDiv = document.createElement("div");
+  moviesDiv.classList.add("movies");
+
+  let h2 = document.createElement("h2");
+  h2.textContent = ` Trending ${genre.name} `
+
+  section.appendChild(h2);
+
+
+  fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=${genre.id}&sort_by=popularity.desc&api_key=7f5a1f278f0641ca5e76e5ad1cc4829a`).then((response) => {
+    return response.json();
+  }).then((data) => {
+    data.results.forEach((v, i) => {
+      moviesDiv.appendChild(createMovieCard(v));
+    });
+  }).finally(() => {
+    section.appendChild(moviesDiv)
+    mainSection.appendChild(section)
+  })
+
 }
 
 window.onload = () => {
@@ -65,8 +94,23 @@ window.onload = () => {
     });
 
   })
+
+  fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=7f5a1f278f0641ca5e76e5ad1cc4829a&language=en-US").then((response) => {
+    return response.json();
+  }).then((data) => {
+    console.log(data.genres)
+    genres = data.genres
+  })
 }
 
 detailsModal.onclick = () => {
   $(detailsModal).fadeOut()
+}
+
+
+document.onscroll = () => {
+  if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+    createMovieSection(genres[genreIndex]);
+    genreIndex++;
+  }
 }

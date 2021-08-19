@@ -150,42 +150,43 @@ section.category .options a.active {
   color: white;
 }
 
-section.popular h2 {
+.popular h2 {
   text-align: center;
   color: #221f3e;
   text-transform: uppercase;
-  margin: 20px 0;
+  margin: 50px 0;
+  font-size: 3em;
 }
-section.popular .movies {
+.popular .movies {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
 @media screen and (max-width: 850px) {
-  section.popular .movies {
+  .popular .movies {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-section.popular .movies .movie {
+.popular .movies .movie {
   padding: 20px;
 }
-section.popular .movies .movie .img img {
+.popular .movies .movie .img img {
   width: 100%;
 }
-section.popular .movies .movie .content {
+.popular .movies .movie .content {
   display: flex;
 }
-section.popular .movies .movie .content p {
+.popular .movies .movie .content p {
   margin-right: auto;
 }
-section.popular .movies .movie .content button {
+.popular .movies .movie .content button {
   background: transparent;
   border: none;
 }
-section.popular .movies .movie .content button svg path {
+.popular .movies .movie .content button svg path {
   fill: #221f3e;
 }
-section.popular .movies .movie .content button:hover svg path {
+.popular .movies .movie .content button:hover svg path {
   fill: #3d395f;
 }
 

@@ -1,8 +1,9 @@
+const mainSection = document.querySelector("main .search-results");
 let searchTerm = sessionStorage.getItem("searchTerm");
-const URL = `https://api.themoviedb.org/3/search/movie?api_key=7f5a1f278f0641ca5e76e5ad1cc4829a&language=en-US&query=${searchTerm}&page=1&include_adult=false`;
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-const mainSection = document.querySelector("main .search-results");
+
+document.title = `${searchTerm} - Search Results`
 
 
 const createMovieCard = (movie) => {
@@ -28,16 +29,25 @@ const createMovieCard = (movie) => {
   return card;
 }
 
+let pageN = 0;
 
-fetch(URL).then((response) => {
-  return response.json()
-}).then((data) => {
-  console.log(data);
-  data.results.forEach((v, i) => {
+function fetchMovies() {
+  let url = `https://api.themoviedb.org/3/search/movie?api_key=7f5a1f278f0641ca5e76e5ad1cc4829a&language=en-US&query=${searchTerm}&page=${++pageN}&include_adult=false`;
+  fetch(url).then((response) => {
+    return response.json()
+  }).then((data) => {
+    console.log(data);
+    data.results.forEach((v, i) => {
 
-    mainSection.append(createMovieCard(v));
-  });
-})
+      mainSection.append(createMovieCard(v));
+    });
+  })
+}
+
+
+document.addEventListener('DOMContentLoaded', fetchMovies);
+
+
 
 
 const searchButton = document.querySelector("button");
@@ -51,4 +61,10 @@ searchButton.onclick = () => {
     mainSection.removeChild(v)
 
   })
+}
+
+document.onscroll = () => {
+  if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+    fetchMovies();
+  }
 }
