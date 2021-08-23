@@ -137,6 +137,9 @@ main.result {
     @include media-max(850px) {
       grid-template-columns: repeat(2, 1fr);
     }
+    @include media-max(500px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
     .movie {
       padding: 20px;
       .img {

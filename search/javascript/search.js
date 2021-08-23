@@ -1,6 +1,7 @@
 const mainSection = document.querySelector("main .search-results");
 let searchTerm = sessionStorage.getItem("searchTerm");
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+let result = []
 
 
 document.title = `${searchTerm} - Search Results`
@@ -36,7 +37,9 @@ function fetchMovies() {
   fetch(url).then((response) => {
     return response.json()
   }).then((data) => {
-    console.log(data);
+    // console.log(data);
+    result.push(data.results)
+    result = result.flat()
     data.results.forEach((v, i) => {
 
       mainSection.append(createMovieCard(v));

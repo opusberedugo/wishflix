@@ -45,6 +45,8 @@ const createMovieCard = (movie) => {
 const createMovieSection = (genre) => {
   let section = document.createElement("section");
   section.classList.add("popular");
+  section.id = `${genre.name.toLowerCase()}section`;
+
 
   let moviesDiv = document.createElement("div");
   moviesDiv.classList.add("movies");
@@ -107,6 +109,8 @@ window.onload = () => {
 
       option.textContent = v.name;
       document.querySelector(".category div.options").appendChild(option)
+      document.querySelector(".category div.options").appendChild(option)
+      option.href = `#${v.name.toLowerCase()}section`
     })
   })
 }
@@ -119,6 +123,12 @@ detailsModal.onclick = () => {
 document.onscroll = () => {
   if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
     createMovieSection(genres[genreIndex]);
+
+    let option = document.createElement("a")
+    option.classList.add("option");
+    option.textContent = genres[genreIndex].name;
+
+
     genreIndex++;
   }
 }

@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: Poppins, Montserrat;
   outline: none;
+  scroll-behavior: smooth;
 }
 
 @mixin media-max ($width) {
@@ -20,6 +21,12 @@ nav {
   display: flex;
   align-content: center;
   align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 0 5px lightgray;
+  z-index: 10;
   @include media-max(500px) {
     display: block;
   }
@@ -124,12 +131,14 @@ section.category {
   display: flex;
   justify-content: center;
   align-items: center;
+  display: block;
+  margin-top: 30px;
   @include media-max(914px) {
     // flex-direction: column;
-    display: block;
   }
   .header {
     margin: 0 20px;
+    text-align: center;
     @include media-max(914px) {
       text-align: center;
       font-weight: 600;
@@ -138,9 +147,10 @@ section.category {
   .options {
     display: flex;
     flex-wrap: wrap;
-    @include media-max(914px) {
-      justify-content: center;
-    }
+    width: 90vw;
+    margin: 0 auto;
+    @include media-max(914px) {}
+    justify-content: center;
     a {
       border-radius: 5rem;
       padding: 10px;
@@ -170,8 +180,14 @@ section.category {
     @include media-max(850px) {
       grid-template-columns: repeat(2, 1fr);
     }
+    @include media-max(500px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
     .movie {
       padding: 20px;
+      &:hover {
+        transform: scale(1.1);
+      }
       .img {
         img {
           width: 100%;

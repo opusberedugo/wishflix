@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: Poppins, Montserrat;
   outline: none;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -14,6 +15,12 @@ nav {
   display: flex;
   align-content: center;
   align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 0 5px lightgray;
+  z-index: 10;
 }
 @media screen and (max-width: 500px) {
   nav {
@@ -114,14 +121,12 @@ section.category {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-@media screen and (max-width: 914px) {
-  section.category {
-    display: block;
-  }
+  display: block;
+  margin-top: 30px;
 }
 section.category .header {
   margin: 0 20px;
+  text-align: center;
 }
 @media screen and (max-width: 914px) {
   section.category .header {
@@ -132,11 +137,9 @@ section.category .header {
 section.category .options {
   display: flex;
   flex-wrap: wrap;
-}
-@media screen and (max-width: 914px) {
-  section.category .options {
-    justify-content: center;
-  }
+  width: 90vw;
+  margin: 0 auto;
+  justify-content: center;
 }
 section.category .options a {
   border-radius: 5rem;
@@ -167,8 +170,16 @@ section.category .options a.active {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media screen and (max-width: 500px) {
+  .popular .movies {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .popular .movies .movie {
   padding: 20px;
+}
+.popular .movies .movie:hover {
+  transform: scale(1.1);
 }
 .popular .movies .movie .img img {
   width: 100%;
