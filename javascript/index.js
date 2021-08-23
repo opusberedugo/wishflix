@@ -141,7 +141,15 @@ formButtons[1].onclick = () => {
     } else if (!emailLogInValid) {
       throw Error("Username or email incorrect")
     }
-
+  } else {
+    usernameLogIn(logInFields[0].value, logInFields[1].value);
+    if (usernameLogInValid) {
+      username = logInFields[0].value;
+      sessionStorage.setItem("username", username);
+      window.location = "index.new.html"
+    } else if (!emailLogInValid) {
+      throw Error("Username or email incorrect")
+    }
   }
 
 }

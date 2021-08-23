@@ -1,3 +1,13 @@
+@mixin media-max ($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -24,6 +34,117 @@ header {
   height: 200px;
   background-color: #221f3e;
   overflow: hidden;
+}
+
+nav {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 0 5px lightgray;
+  z-index: 10;
+  @include media-max(500px) {
+    display: block;
+  }
+  .brand {
+    @include media-max(500px) {
+      // margin-left: 0;
+      display: flex;
+      align-content: center;
+      align-items: center;
+    }
+    .logo {
+      h1 {
+        color: #221f3e;
+        padding: 10px;
+        font-size: 1.5rem;
+      }
+      @include media-max(500px) {
+        margin-right: auto;
+      }
+    }
+    .profile {
+      display: none;
+      @include media-max(500px) {
+        display: inherit;
+      }
+      &:hover {
+        svg {
+          path {
+            fill: #322f4e;
+          }
+        }
+      }
+      svg {
+        path {
+          fill: #221f3e;
+        }
+      }
+    }
+    .menu {
+      display: none;
+      @include media-max(500px) {
+        display: inherit;
+      }
+      padding: 10px;
+      background-color: white;
+      border: none;
+      svg {
+        path {
+          fill: #221f3e;
+        }
+      }
+    }
+  }
+  .options {
+    display: flex;
+    flex-grow: 1;
+    align-content: center;
+    align-items: center;
+    @include media-max(500px) {
+      // margin-left: 0;
+      display: none;
+    }
+    a {
+      padding: 20px;
+      color: black;
+      @include media-max(500px) {
+        // margin-left: 0;
+        display: block;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+      &:nth-of-type(1) {
+        margin-left: auto;
+        @include media-max(500px) {
+          margin-left: 0;
+          // display: none;
+        }
+      }
+      &.profile {
+        margin-left: auto;
+        @include media-max(500px) {
+          display: none;
+        }
+        &:hover {
+          svg {
+            path {
+              fill: #322f4e;
+            }
+          }
+        }
+        svg {
+          path {
+            fill: #221f3e;
+          }
+        }
+      }
+    }
+  }
 }
 
 main {
@@ -139,6 +260,40 @@ main {
             color: white;
             text-transform: uppercase;
             border-radius: 5px;
+          }
+        }
+        .options {
+          padding: 20px;
+          display: grid;
+          gap: 20px;
+          grid-template-columns: repeat(3, 1fr);
+          @include media-max(800px) {
+            grid-template-columns: repeat(1, 1fr);
+          }
+          .option {
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            &:hover {
+              transform: scale(1.05);
+            }
+            &:nth-of-type(odd) {
+              background-color: #221f3e;
+              color: white;
+              svg {
+                path {
+                  fill: white;
+                }
+              }
+            }
+            &:nth-of-type(even) {
+              border: 3px #221f3e solid;
+              svg {
+                path {
+                  fill: #221f3e;
+                }
+              }
+            }
           }
         }
       }

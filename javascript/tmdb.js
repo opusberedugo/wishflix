@@ -18,7 +18,7 @@ const getTrendingMoivies = (arr) => {
 
 
 
-let popularMoviesGenreURL = `${BASE}/discover/movie?with_genres=${genreID}&sort_by=popularity.desc&${APIKEY}`
+// let popularMoviesGenreURL = `${BASE}/discover/movie?with_genres=${genreID}&sort_by=popularity.desc&${APIKEY}`
 
 // https://api.themoviedb.org/3/discover/movie?with_genres=18&sort_by=popularity.desc&api_key=7f5a1f278f0641ca5e76e5ad1cc4829a
 // 

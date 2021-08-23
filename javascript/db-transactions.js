@@ -67,7 +67,7 @@ const emailLogIn = (email, password) => {
 }
 
 
-let usernameLogInValid
+let usernameLogInValid;
 const usernameLogIn = (username, password) => {
   db.transaction((t) => {
     t.executeSql(`SELECT 0 FROM USERS WHERE USERNAME = '${username}' AND PASSWORD = '${password}'`, [], (tx, results) => {

@@ -132,3 +132,6 @@ document.onscroll = () => {
     genreIndex++;
   }
 }
+document.querySelector("button.menu").onclick = () => {
+  $("nav div.options").slideToggle(1000)
+}
