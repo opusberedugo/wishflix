@@ -137,7 +137,7 @@ formButtons[1].onclick = () => {
       console.log("");
       getUsername();
       sessionStorage.setItem("username", username);
-      window.location = "index.new.html"
+      window.location = "home.html"
     } else if (!emailLogInValid) {
       throw Error("Username or email incorrect")
     }
