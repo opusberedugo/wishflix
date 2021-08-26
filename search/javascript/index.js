@@ -20,12 +20,7 @@ document.onkeyup = (e) => {
 
   if (e.keyCode === 13) {
     e.preventDefault();
-    if (formInput.value === "") {
-
-    } else {
-      sessionStorage.setItem("searchTerm", formInput.value)
-      window.location = "results.html"
-    }
+    button.click();
   }
 }
 

@@ -59,10 +59,24 @@ const searchField = document.querySelector("input");
 
 
 searchButton.onclick = () => {
+  pageN=0;
   searchTerm = searchField.value.trim();
-  document.querySelectorAll("div.card").forEach((v) => {
+  document.querySelectorAll("div.movie").forEach((v) => {
     mainSection.removeChild(v)
+  })
 
+
+  let url = `https://api.themoviedb.org/3/search/movie?api_key=7f5a1f278f0641ca5e76e5ad1cc4829a&language=en-US&query=${searchTerm}&page=${++pageN}&include_adult=false`;
+  fetch(url).then((response) => {
+    return response.json()
+  }).then((data) => {
+    // console.log(data);
+    result.push(data.results)
+    result = result.flat()
+    data.results.forEach((v, i) => {
+
+      mainSection.append(createMovieCard(v));
+    });
   })
 }
 
@@ -70,4 +84,4 @@ document.onscroll = () => {
   if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
     fetchMovies();
   }
-}
+}  
